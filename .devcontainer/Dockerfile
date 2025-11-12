@@ -65,8 +65,8 @@ ENV PATH=$PATH:/usr/local/share/npm-global/bin
 ENV SHELL=/bin/zsh
 
 # Set the default editor and visual
-ENV EDITOR=nano
-ENV VISUAL=nano
+ENV EDITOR=vim
+ENV VISUAL=vim
 
 # Default powerline10k theme
 ARG ZSH_IN_DOCKER_VERSION=1.2.0
@@ -89,3 +89,6 @@ RUN chmod +x /usr/local/bin/init-firewall.sh && \
   echo "node ALL=(root) NOPASSWD: /usr/local/bin/init-firewall.sh" > /etc/sudoers.d/node-firewall && \
   chmod 0440 /etc/sudoers.d/node-firewall
 USER node
+
+RUN echo 'claude' >> /home/node/.zshrc
+CMD ["/bin/zsh"]
